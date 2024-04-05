@@ -10,7 +10,8 @@ Two fundamental equations in fluid dynamics are the Navier-Stokes equations and 
 
 The Navier-Stokes equations are a set of nonlinear partial differential equations that describe the motion of viscous fluid substances. These equations are based on Newton's second law of motion and can be expressed in the form:
 
-![Navier-Stokes Equations](https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\frac{\partial&space;\mathbf{u}}{\partial&space;t}&space;&plus;&space;(\mathbf{u}&space;\cdot&space;\nabla)&space;\mathbf{u}&space;=&space;-\frac{1}{\rho}&space;\nabla&space;p&space;&plus;&space;\nu&space;\nabla^2&space;\mathbf{u}&space;&plus;&space;\mathbf{f})
+![Continuity Equation](https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\frac{\partial&space;\rho}{\partial&space;t}&space;&plus;&space;\nabla&space;\cdot&space;(\rho&space;\mathbf{u})&space;=&space;0)
+
 
 
 where:
