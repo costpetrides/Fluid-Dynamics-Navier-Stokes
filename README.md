@@ -1,5 +1,8 @@
 # Fluid Dynamics! 
 
+<img src="/Figures/KHI.png" alt="Your image description" width="300" height="300">  <img src="/Figures/NS-Sim.png" alt="Your image description" width="300" height="300">  <img src="/Figures/2D-Flow-Cylinder.png" alt="Your image description" width="600" height="300">
+
+
 ### Key Equations of Fluid Dynamics
 
 Two fundamental equations in fluid dynamics are the Navier-Stokes equations and the Continuity equation. These equations describe how the velocity field of fluid flow evolves over time under the influence of internal and external forces.
@@ -30,7 +33,6 @@ This equation ensures that the mass of the fluid remains constant over time, mea
 
 
 
-<img src="/Figures/KHI.png" alt="Your image description" width="300" height="300">  <img src="/Figures/NS-Sim.png" alt="Your image description" width="300" height="300">  <img src="/Figures/2D-Flow-Cylinder.png" alt="Your image description" width="600" height="300">
 
 
 
