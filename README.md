@@ -30,6 +30,3 @@ The Continuity equation represents the principle of conservation of mass in flui
 
 This equation ensures that the mass of the fluid remains constant over time, meaning that the amount of fluid entering a given volume is equal to the amount of fluid leaving that volume.
 
-### Summary
-
-Together, the Navier-Stokes and Continuity equations form the cornerstone of fluid dynamics, enabling the mathematical modeling of complex fluid flows. Solving these equations for a particular set of boundary conditions and initial conditions provides insight into the behavior of fluids in various scientific and engineering applications.
