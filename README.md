@@ -28,3 +28,6 @@ The Continuity equation represents the principle of conservation of mass in flui
 
 This equation ensures that the mass of the fluid remains constant over time, meaning that the amount of fluid entering a given volume is equal to the amount of fluid leaving that volume.
 
+
+
+![Alt text](/Figures/KHI.png)Figures
