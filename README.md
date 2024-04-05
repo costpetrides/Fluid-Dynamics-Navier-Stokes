@@ -10,9 +10,7 @@ Two fundamental equations in fluid dynamics are the Navier-Stokes equations and 
 
 The Navier-Stokes equations are a set of nonlinear partial differential equations that describe the motion of viscous fluid substances. These equations are based on Newton's second law of motion and can be expressed in the form:
 
-![Continuity Equation](https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\frac{\partial&space;\rho}{\partial&space;t}&space;&plus;&space;\nabla&space;\cdot&space;(\rho&space;\mathbf{u})&space;=&space;0)
-
-
+![Navier-Stokes Equations](https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\frac{\partial&space;\mathbf{u}}{\partial&space;t}&space;&plus;&space;(\mathbf{u}&space;\cdot&space;\nabla)&space;\mathbf{u}&space;=&space;-\frac{1}{\rho}&space;\nabla&space;p&space;&plus;&space;\nu&space;\nabla^2&space;\mathbf{u}&space;&plus;&space;\mathbf{f})
 
 where:
 - \(\mathbf{u}\) is the velocity field of the fluid,
@@ -24,11 +22,11 @@ where:
 
 #### Continuity Equation
 
-The Continuity equation represents the principle of conservation of mass in fluid dynamics. For an incompressible fluid, it simplifies to the condition that the divergence of the velocity field is zero:
+The Continuity equation represents the principle of conservation of mass in fluid dynamics.
 
-\[
-\nabla \cdot \mathbf{u} = 0
-\]
+
+![Continuity Equation](https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\frac{\partial&space;\rho}{\partial&space;t}&space;&plus;&space;\nabla&space;\cdot&space;(\rho&space;\mathbf{u})&space;=&space;0)
+
 
 This equation ensures that the mass of the fluid remains constant over time, meaning that the amount of fluid entering a given volume is equal to the amount of fluid leaving that volume.
 
