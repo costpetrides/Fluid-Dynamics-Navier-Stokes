@@ -30,4 +30,5 @@ This equation ensures that the mass of the fluid remains constant over time, mea
 
 
 
-![Alt text](/Figures/KHI.png) ![Alt text](/Figures/NS-Sim.png)
+![Alt text](/Figures/KHI.png)  <img src="/Figures/NS-Sim.pngg" alt="Your image description" width="100" height="100">
+
