@@ -30,4 +30,4 @@ This equation ensures that the mass of the fluid remains constant over time, mea
 
 
 
-![Alt text](/Figures/KHI.png)Figures
+![Alt text](/Figures/KHI.png)
