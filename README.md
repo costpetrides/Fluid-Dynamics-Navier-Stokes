@@ -30,7 +30,7 @@ This equation ensures that the mass of the fluid remains constant over time, mea
 
 
 
-<img src="/Figures/KHI.png" alt="Your image description" width="300" height="300">  <img src="/Figures/NS-Sim.png" alt="Your image description" width="300" height="300">  <img src="/Figures/2D-Flow-Cylinder.png" alt="Your image description" width="500" height="300">
+<img src="/Figures/KHI.png" alt="Your image description" width="300" height="300">  <img src="/Figures/NS-Sim.png" alt="Your image description" width="300" height="300">  <img src="/Figures/2D-Flow-Cylinder.png" alt="Your image description" width="500" height="400">
 
 
 
