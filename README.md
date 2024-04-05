@@ -1,7 +1,5 @@
 # Fluid Dynamics! 
 
-Fluid dynamics is a subfield of fluid mechanics that describes the flow of fluids (liquids and gases). It encompasses various phenomena, including flow velocity, pressure, density, and temperature, as a function of space and time. Understanding fluid dynamics is crucial for a wide range of applications, from designing efficient vehicles and predicting weather patterns to understanding the flow of blood in the human body and the behavior of oceans and atmospheres on a global scale.
-
 ### Key Equations of Fluid Dynamics
 
 Two fundamental equations in fluid dynamics are the Navier-Stokes equations and the Continuity equation. These equations describe how the velocity field of fluid flow evolves over time under the influence of internal and external forces.
