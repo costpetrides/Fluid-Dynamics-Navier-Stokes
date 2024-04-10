@@ -31,7 +31,9 @@ The simulation was executed five times to explore the dynamics under different c
 3. Water depth of H = 100 meters, with Coriolis effect and without Coriolis effect.
 
 <p align="center">
-  <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
+  <a href="Your-Video-URL-Here" target="_blank">
+    <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
+  </a>
 </p>
 
 ---
