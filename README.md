@@ -1,7 +1,3 @@
-Certainly! I'll refine the README to include a subsection specifically detailing your trials with different water depths and the presence or absence of the Coriolis effect, as well as elaborate on the Rossby number equation.
-
----
-
 # 2D Shallow Water Simulation
 
 ## Introduction
