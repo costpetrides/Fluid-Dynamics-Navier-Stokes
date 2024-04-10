@@ -32,23 +32,3 @@ The simulation was executed five times to explore the dynamics under different c
 4. Water depth of H = 100 meters, without Coriolis effect.
 5. Water depth of H = 4000 meters, with Coriolis effect.
 
-.
-
-## Running the Simulation
-To run the simulation, ensure Python is installed along with NumPy and Matplotlib libraries. Clone this repository, navigate to the project directory, and execute the script:
-
-```bash
-python shallow_water_simulation.py
-```
-
-This will generate the simulations and visualizations for each of the four trials described above.
-
-## Contributing
-Contributions to this project are encouraged! Whether it involves adding new features, optimizing existing code, or improving documentation, your help is welcome. Please feel free to fork the repository and submit pull requests.
-
-## License
-This project is released under [SPECIFY LICENSE], facilitating collaboration and distribution.
-
----
-
-This README now includes a clear explanation of the Rossby number and its relevance to the simulation, along with a specific subsection detailing the different trials conducted to analyze the effects of water depth and the Coriolis effect on shallow water dynamics. Ensure to replace `[SPECIFY LICENSE]` with the actual license under which your project is released.
