@@ -55,3 +55,6 @@ The simulation models a two-dimensional fluid dynamics problem where two layers 
 - **Boundary Conditions:** Periodic in both the horizontal and vertical directions.
 
 ### Visualization
+<p align="center">
+  <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/KHI.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
+</p>
