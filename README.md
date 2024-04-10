@@ -38,7 +38,7 @@ The simulation was executed four times to explore the dynamics under different c
 
 <p align="center">
   <a href="https://drive.google.com/file/d/11jBBr4mWOuBRx3ttGlIut1jJO2pvndly/view?usp=sharing" target="_blank">
-    <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
+    <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H100.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
   </a>
 </p>
 ---
