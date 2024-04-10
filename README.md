@@ -24,7 +24,7 @@ where:
 
 A low Rossby number signifies that the Coriolis effect is dominant over inertial forces, which justifies the linear approximation of the momentum equations in large-scale geophysical flows.
 
-## Experimental Setup
+## Some Trials !
 The simulation was executed five times to explore the dynamics under different conditions. The simulation produced videos that visualize the surface elevation and velocity field! 
 1. Water depth of H = 10 meters, with Coriolis effect.
 2. Water depth of H = 10 meters, without Coriolis effect.
