@@ -5,6 +5,10 @@ Here you can find a simulation that solves the 2D shallow water equations using 
 differences where the momentum equations are taken to be linear, but the
 continuity equation is solved in its nonlinear form! 
 
+    \begin{equation}
+    \frac{3}{3}
+    \end{equation}
+
     du/dt - fv = -g*d(eta)/dx + tau_x/(rho_0*H)- kappa*u
     dv/dt + fu = -g*d(eta)/dy + tau_y/(rho_0*H)- kappa*v
     d(eta)/dt + d((eta + H)*u)/dx + d((eta + H)*u)/dy = sigma - w
