@@ -25,16 +25,14 @@ where:
 A low Rossby number signifies that the Coriolis effect is dominant over inertial forces, which justifies the linear approximation of the momentum equations in large-scale geophysical flows.
 
 ## Experimental Setup
-The simulation was executed four times to explore the dynamics under different conditions:
+The simulation was executed five times to explore the dynamics under different conditions. The simulation produced videos that visualize the surface elevation and velocity field! 
 1. Water depth of H = 10 meters, with Coriolis effect.
 2. Water depth of H = 10 meters, without Coriolis effect.
 3. Water depth of H = 100 meters, with Coriolis effect.
 4. Water depth of H = 100 meters, without Coriolis effect.
+5. Water depth of H = 4000 meters, with Coriolis effect.
 
-Each trial aims to illuminate the effects of varying water depth and the presence of the Coriolis effect on the fluid dynamics within the simulation.
-
-### Results
-For each of the above scenarios, the simulation produced videos that visualize the surface elevation and velocity field. These visualizations are crucial for understanding how water depth and the Coriolis effect influence the behavior of shallow water flows.
+.
 
 ## Running the Simulation
 To run the simulation, ensure Python is installed along with NumPy and Matplotlib libraries. Clone this repository, navigate to the project directory, and execute the script:
