@@ -1,3 +1,1 @@
-<a href="https://youtube.com/shorts/lPf9BRDmlc8?feature=shared">
-  <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png?raw=true" width="600" alt="Alternative text for the image">
-</a>
+<video width="auto" src="https://github.com/tum-pbs/autoreg-pde-diffusion/assets/16224924/e73db04e-d8fa-4164-a4bb-a0997d5a90ed"></video>
