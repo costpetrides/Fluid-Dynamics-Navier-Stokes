@@ -26,11 +26,9 @@ A low Rossby number signifies that the Coriolis effect is dominant over inertial
 
 ## Some Trials !
 The simulation was executed five times to explore the dynamics under different conditions. The simulation produced videos that visualize the surface elevation and velocity field! 
-1. Water depth of H = 10 meters, with Coriolis effect.
-2. Water depth of H = 10 meters, without Coriolis effect.
-3. Water depth of H = 100 meters, with Coriolis effect.
-4. Water depth of H = 100 meters, without Coriolis effect.
-5. Water depth of H = 4000 meters, with Coriolis effect.
+1. Water depth of H = 10 meters, with Coriolis effect and without Coriolis effect. [H=10m Video](https://www.youtube.com/shorts/lPf9BRDmlc8)
+2. Water depth of H = 100 meters, with Coriolis effect and without Coriolis effect. 
+3. Water depth of H = 100 meters, with Coriolis effect and without Coriolis effect.
 
 <p align="center">
   <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
