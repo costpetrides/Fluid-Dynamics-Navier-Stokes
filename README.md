@@ -1,7 +1,7 @@
 # 1. 2D Shallow Water Simulation
 
 ## Introduction
-Welcome to the 2D Shallow Water Simulation project! This repository contains a numerical simulation designed to solve the 2D shallow water equations using finite differences. By modeling the momentum equations linearly and solving the continuity equation in its nonlinear form, this project provides insights into fluid dynamics in shallow water contexts under various conditions.
+Welcome to the 2D Shallow Water Simulation project [Simiulation](https://github.com/costpetrides/Fluid-Dynamics/blob/main/Simulations.ipynb)! This repository contains a numerical simulation designed to solve the 2D shallow water equations using finite differences. By modeling the momentum equations linearly and solving the continuity equation in its nonlinear form, this project provides insights into fluid dynamics in shallow water contexts under various conditions.
 
 The simulation produced videos that visualize 
  - `Surface η(x,y,t) elevation`
