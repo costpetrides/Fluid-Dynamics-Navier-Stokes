@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to the 2D Shallow Water Simulation project! This repository contains a numerical simulation designed to solve the 2D shallow water equations using finite differences. By modeling the momentum equations linearly and solving the continuity equation in its nonlinear form, this project provides insights into fluid dynamics in shallow water contexts under various conditions.
 
-Fell free to play with different initial conditions and senarios.  The simulation produced videos that visualize 
+The simulation produced videos that visualize 
   - Surface η(x,y,t) elevation
   - Velocity field
 
@@ -16,27 +16,16 @@ The simulation also calculates parameters like:
 
 ## Initial Parameters
 
-- Length of domain in x-direction
-- Length of domain in y-direction
-- Acceleration of gravity [m/s^2]
-- Depth of fluid [m]
-- Fixed part ofcoriolis parameter f [1/s]
-- Gradient of coriolis parameter β [1/ms]
-- Density of fluid [kg/m^3)]
-tau_0 = 0.1             # Amplitude of wind stress [kg/ms^2]
-use_coriolis = True     # True if you want coriolis force
-use_friction = True     # True if you want bottom friction
-use_wind = False        # True if you want wind stress
-use_beta = True        # True if you want variation in coriolis
-use_source = False       # True if you want mass source into the domain
-use_sink = False       # True if you want mass sink out of the domain
-param_string = "\n================================================================"
-param_string += "\nuse_coriolis = {}\nuse_beta = {}".format(use_coriolis, use_beta)
-param_string += "\nuse_friction = {}\nuse_wind = {}".format(use_friction, use_wind)
-param_string += "\nuse_source = {}\nuse_sink = {}".format(use_source, use_sink)
-param_string += "\ng = {:g}\nH = {:g}".format(g, H)
+  - Length of domain in x-direction
+  - Length of domain in y-direction
+  - Acceleration of gravity [m/s^2]
+  - Depth of fluid [m]
+  - Fixed part ofcoriolis parameter f [1/s]
+  - Gradient of coriolis parameter β [1/ms]
+  - Density of fluid [kg/m^3)]
+  - Amplitude of wind stress [kg/ms^2]
 
-
+Is not mantantory to use all use parameters. Fell free to play with different initial conditions and senarios !!
 
 
 ## Theoretical Background
