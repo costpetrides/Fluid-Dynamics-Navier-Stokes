@@ -1,7 +1,13 @@
 # 1. 2D Shallow Water Simulation
 
 ## Introduction
-Welcome to the 2D Shallow Water Simulation project! This repository contains a numerical simulation designed to solve the 2D shallow water equations using finite differences. By modeling the momentum equations linearly and solving the continuity equation in its nonlinear form, this project provides insights into fluid dynamics in shallow water contexts under various conditions, so fell free to play with different initial conditions and senarios ! 
+Welcome to the 2D Shallow Water Simulation project! This repository contains a numerical simulation designed to solve the 2D shallow water equations using finite differences. By modeling the momentum equations linearly and solving the continuity equation in its nonlinear form, this project provides insights into fluid dynamics in shallow water contexts under various conditions.
+
+Fell free to play with different initial conditions and senarios. The simulation also calculates parameters like:
+  - Rossby radius
+  - Rossby number
+  - Long Rossby wave speed
+  - Long Rossb  transit time
 
 ## Theoretical Background
 The simulation leverages a set of partial differential equations known as the shallow water equations, which describe fluid flow under a free surface in a fluid layer of constant density.
