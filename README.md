@@ -24,6 +24,7 @@ The simulation also calculates parameters like:
   - `Gradient of coriolis parameter β [1/ms]`
   - `Density of fluid [kg/m^3)]`
   - `Amplitude of wind stress [kg/ms^2]`
+  -   - `Friction [kg/ms^2]`
 
 Is not mantantory to use all use parameters. Fell free to play with different initial conditions and senarios !!
 
