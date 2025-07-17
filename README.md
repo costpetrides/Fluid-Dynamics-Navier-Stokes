@@ -73,7 +73,11 @@ The simulation was executed four times to explore the dynamics under different c
 ---
 
 # 2. Forcing 
-
+<p align="center">
+  <a href="https://drive.google.com/file/d/11jBBr4mWOuBRx3ttGlIut1jJO2pvndly/view?usp=sharing" target="_blank">
+   <img src="Forcing.gif" style="width: 100%; height: 300px; object-fit: cover;" loop>
+  </a>
+</p>
 
 
 
