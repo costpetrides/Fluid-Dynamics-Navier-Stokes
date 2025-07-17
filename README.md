@@ -72,7 +72,13 @@ The simulation was executed four times to explore the dynamics under different c
 </p>
 ---
 
-# 2. Kelvin-Helmholtz Instability Simulation
+# 2. Forcing 
+
+
+
+
+
+# 3. Kelvin-Helmholtz Instability Simulation
 
 ## Introduction
 This repository contains also a Python script designed to simulate the Kelvin-Helmholtz instability, a fascinating fluid dynamic phenomenon that occurs when there is velocity shear in a single continuous fluid, or between two fluids.
