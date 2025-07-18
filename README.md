@@ -105,5 +105,5 @@ The simulation models a two-dimensional fluid dynamics problem where two layers 
 
 ### Visualization
 <p align="center">
-  <img src="eta_1.gif" width="300" alt="Shallow Water  Simulation Results for H=10m">
+  <img src="KHI.gif" width="300" alt="Shallow Water  Simulation Results for H=10m">
 </p>
