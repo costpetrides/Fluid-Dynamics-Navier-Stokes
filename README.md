@@ -52,12 +52,34 @@ A low Rossby number signifies that the Coriolis effect is dominant over inertial
 
 ## Some Trials !
 The simulation was executed four times to explore the dynamics under different conditions. The simulation produced videos that visualize the surface elevation and velocity field! 
-1. Water depth of H = 10 meters, with Coriolis effect and without Coriolis effect. [H=10m Video](https://drive.google.com/file/d/1YR8FDIVf6ByGHbSNfJscaeu65GOWXCBM/view?usp=sharing),
-[Results](https://drive.google.com/file/d/1ydpSKf8FSKkrxFhM63t2urid96WEVaXX/view?usp=sharing)
+
+use_coriolis = True
+use_beta = True
+use_friction = True
+use_wind = False
+use_source = False
+use_sink = False
+g = 9.81
+H = 100
+dx = 6711.41 km
+dy = 6711.41 km
+dt = 21.43 s
+kappa = 2.31481e-06
+kappa/beta = 115.741 km
+f_0 = 0.0001
+Max alpha = 0.00235707
+
+Rossby radius: 313.2 km
+Rossby number: 0.313209
+Long Rossby wave speed: 1.962 m/s
+Long Rossby transit time: 5.90 days
+
+
+
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1YR8FDIVf6ByGHbSNfJscaeu65GOWXCBM/view?usp=sharing" target="_blank">
-    <img src="https://github.com/costpetrides/Fluid-Dynamics/blob/main/Figures/H10.png" width="600" alt="Shallow Water  Simulation Results for H=10m">
+    <img src="hta_1.gif" width="600" alt="Shallow Water  Simulation Results for H=10m">
   </a>
 </p>
 
