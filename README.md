@@ -79,10 +79,9 @@ The simulation was executed four times to explore the dynamics under different c
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1YR8FDIVf6ByGHbSNfJscaeu65GOWXCBM/view?usp=sharing" target="_blank">
-    <img src="hta_1.gif" width="600" alt="Shallow Water  Simulation Results for H=10m">
+    <img src="hta_1.gif" width="300" alt="Shallow Water  Simulation Results for H=10m">
   </a>
 </p>
-
 
 
 
