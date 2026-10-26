@@ -1,4 +1,4 @@
-name: Optimize semicircular hill video
+name: Optimize gallery animations
 
 on:
   push:
@@ -17,26 +17,63 @@ jobs:
         with:
           persist-credentials: true
       - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Generate web-optimized MP4 and poster
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Generate separate optimized videos and posters
+        shell: bash
         run: |
           set -euo pipefail
-          src="GFD-NKUA/semicircular_hill_flow.mp4"
-          test -s "$src"
-          ffmpeg -hide_banner -loglevel error -y -i "$src" \
-            -map 0:v:0 -an -c:v libx264 -preset medium -crf 24 \
-            -vf "scale='min(1280,iw)':-2" -pix_fmt yuv420p \
-            -movflags +faststart "GFD-NKUA/semicircular_hill_flow_web.mp4"
-          ffmpeg -hide_banner -loglevel error -y -i "$src" \
-            -frames:v 1 -q:v 3 "GFD-NKUA/semicircular_hill_poster.jpg"
-          test -s "GFD-NKUA/semicircular_hill_flow_web.mp4"
-          test -s "GFD-NKUA/semicircular_hill_poster.jpg"
-      - name: Commit only the generated assets
+          convert() {
+            local src="$1" dst="$2" poster="$3"
+            test -s "$src"
+            ffmpeg -hide_banner -loglevel error -y -i "$src" -map 0:v:0 -an -vf "fps=20,scale='min(960,iw)':-2" -c:v libx264 -preset medium -crf 25 -pix_fmt yuv420p -movflags +faststart "$dst"
+            ffmpeg -hide_banner -loglevel error -y -i "$src" -frames:v 1 -q:v 3 "$poster"
+            test -s "$dst"
+            test -s "$poster"
+            ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1 "$dst" | grep -q h264
+          }
+          convert "hta_1.gif" "hta_1_web.mp4" "hta_1_poster.jpg"
+          convert "KHI.gif" "KHI_web.mp4" "KHI_poster.jpg"
+          convert "Forcing.gif" "Forcing_web.mp4" "Forcing_poster.jpg"
+          convert "GFD-NKUA/semicircular_hill_flow.mp4" "GFD-NKUA/semicircular_hill_flow_web.mp4" "GFD-NKUA/semicircular_hill_poster.jpg"
+          ls -lh *_web.mp4 GFD-NKUA/*_web.mp4
+      - name: Update gallery references only after assets are valid
+        shell: python
+        run: |
+          from pathlib import Path
+          gallery = Path("index.html")
+          html = gallery.read_text()
+          replacements = [
+              ('<video autoplay muted loop playsinline preload="metadata" aria-label="Semicircular hill flow preview"><source src="GFD-NKUA/semicircular_hill_flow.mp4" type="video/mp4"></video>', '<video autoplay muted loop playsinline preload="none" poster="GFD-NKUA/semicircular_hill_poster.jpg" aria-label="Semicircular hill flow preview"><source src="GFD-NKUA/semicircular_hill_flow_web.mp4" type="video/mp4"></video>'),
+              ('<img src="hta_1.gif" alt="Shallow water simulation" loading="lazy">', '<video autoplay muted loop playsinline preload="none" poster="hta_1_poster.jpg" aria-label="Shallow water simulation"><source src="hta_1_web.mp4" type="video/mp4"></video>'),
+              ('<img src="KHI.gif" alt="Kelvin–Helmholtz instability" loading="lazy">', '<video autoplay muted loop playsinline preload="none" poster="KHI_poster.jpg" aria-label="Kelvin–Helmholtz instability"><source src="KHI_web.mp4" type="video/mp4"></video>'),
+              ('<img src="Forcing.gif" alt="Forcing animation" loading="lazy">', '<video autoplay muted loop playsinline preload="none" poster="Forcing_poster.jpg" aria-label="Forcing animation"><source src="Forcing_web.mp4" type="video/mp4"></video>'),
+          ]
+          for old,new in replacements:
+              if old not in html:
+                  raise SystemExit("Unexpected gallery HTML; no changes committed: "+old[:70])
+              html=html.replace(old,new)
+          gallery.write_text(html)
+          pages = [
+              ("simulations/semicircular-hill.html", '<source src="../GFD-NKUA/semicircular_hill_flow.mp4"', '<source src="../GFD-NKUA/semicircular_hill_flow_web.mp4"', '<video controls autoplay muted loop playsinline preload="auto">', '<video controls autoplay muted loop playsinline preload="metadata" poster="../GFD-NKUA/semicircular_hill_poster.jpg">'),
+              ("simulations/shallow-water.html", '<img src="../hta_1.gif" alt="Shallow Water Simulation animation">', '<video controls autoplay muted loop playsinline preload="metadata" poster="../hta_1_poster.jpg" style="display:block;width:100%;max-height:75vh;object-fit:contain;background:#141b23;border-radius:12px;margin:28px 0"><source src="../hta_1_web.mp4" type="video/mp4"></video>', None, None),
+              ("simulations/kelvin-helmholtz.html", '<img src="../KHI.gif" alt="Kelvin–Helmholtz Instability animation">', '<video controls autoplay muted loop playsinline preload="metadata" poster="../KHI_poster.jpg" style="display:block;width:100%;max-height:75vh;object-fit:contain;background:#141b23;border-radius:12px;margin:28px 0"><source src="../KHI_web.mp4" type="video/mp4"></video>', None, None),
+              ("simulations/forcing.html", '<img src="../Forcing.gif" alt="Original forcing animation">', '<video controls autoplay muted loop playsinline preload="metadata" poster="../Forcing_poster.jpg" style="display:block;width:100%;max-height:75vh;object-fit:contain;background:#141b23;border-radius:12px;margin:28px 0"><source src="../Forcing_web.mp4" type="video/mp4"></video>', None, None),
+          ]
+          for path,old,new,old2,new2 in pages:
+              p=Path(path)
+              s=p.read_text()
+              if old not in s or (old2 and old2 not in s):
+                  raise SystemExit("Unexpected page HTML; no changes committed: "+path)
+              s=s.replace(old,new)
+              if old2:
+                  s=s.replace(old2,new2)
+              p.write_text(s)
+      - name: Commit optimized assets and working page references together
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add GFD-NKUA/semicircular_hill_flow_web.mp4 GFD-NKUA/semicircular_hill_poster.jpg
+          git add index.html simulations/*.html *_web.mp4 *_poster.jpg GFD-NKUA/*_web.mp4 GFD-NKUA/*_poster.jpg
           if ! git diff --cached --quiet; then
-            git commit -m "Add optimized semicircular hill video and poster"
+            git commit -m "Serve optimized MP4 animation previews with posters"
             git push
           fi
