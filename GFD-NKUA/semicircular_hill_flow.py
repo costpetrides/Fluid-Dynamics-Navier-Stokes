@@ -147,7 +147,7 @@ if __name__ == '__main__':
             fps=FPS,
             bitrate=3500,
             codec='libx264',
-            extra_args=['-pix_fmt', 'yuv420p']
+            extra_args=['-pix_fmt', 'yuv420p', '-movflags', '+faststart']
         ))
         print(f'Saved {OUTPUT}')
     except (FileNotFoundError, RuntimeError) as exc:
