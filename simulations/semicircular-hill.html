@@ -14,7 +14,8 @@ nav{font-size:13px;margin-bottom:55px}
 h1{font-size:clamp(30px,4.8vw,52px);font-weight:680;letter-spacing:-.05em;line-height:1.12;margin:0 0 15px}
 p{font-size:16px;color:#adb9c7;max-width:760px;margin:0 0 34px}
 .formula{font-family:Georgia,"Times New Roman",serif;font-size:clamp(19px,2.7vw,26px);text-align:center;margin:0 0 25px;color:#eef2f6}
-video{display:block;width:100%;height:auto;background:#000;border-radius:10px}
+video{display:block;width:100%;height:auto;max-height:72vh;background:black;border-radius:12px;margin:30px 0 16px}
+.fallback{font-size:12px;margin:12px 0 0;color:#adb9c7}
 @media(max-width:650px){main{padding:22px 17px 45px}nav{margin-bottom:38px}p{font-size:14px;margin-bottom:27px}}
 </style>
 </head>
@@ -24,10 +25,11 @@ video{display:block;width:100%;height:auto;background:#000;border-radius:10px}
 <h1>Potential Flow over a Semicircular Hill</h1>
 <p>A steady uniform stream flows over a semicircular hill of radius <i>a</i>. This visualization uses the exact potential-flow velocity field to animate tracer particles and a material contour.</p>
 <div class="formula">Φ(r, θ) = U(r + a²/r) cos θ</div>
-<video controls autoplay muted loop playsinline preload="metadata">
+<video controls autoplay muted loop playsinline preload="auto">
 <source src="../GFD-NKUA/semicircular_hill_flow.mp4" type="video/mp4">
 Your browser does not support MP4 playback.
 </video>
+<p class="fallback"><a href="../GFD-NKUA/semicircular_hill_flow.mp4">Open original MP4 ↗</a></p>
 </main>
 </body>
 </html>
