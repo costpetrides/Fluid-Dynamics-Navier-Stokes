@@ -1,92 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Potential Flow over a Semicircular Hill | GFD–NKUA</title>
-<style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#e9edf3;background:#10151c}
-*{box-sizing:border-box}body{margin:0}.wrap{max-width:1250px;margin:auto;padding:28px 22px 48px}
-header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-small,.muted{color:#a0aab9}h1{font-weight:650;letter-spacing:-.035em;margin:13px 0 6px;font-size:clamp(25px,4vw,41px)}
-a{color:#b7d8fb}.formula{font-size:17px;color:#c4cddd}.panel{margin-top:25px;background:#181f28;border-radius:18px;padding:14px 14px 10px}
-canvas{width:100%;height:auto;display:block;aspect-ratio:1050/440;border-radius:10px;touch-action:pan-y}
-.controls{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;margin-top:16px}
-button{border:0;background:#ecf1f8;color:#17202d;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer}
-label{display:flex;align-items:center;gap:10px;font-size:14px}input[type=range]{width:125px;accent-color:#89baf3}
-input[type=checkbox]{accent-color:#89baf3}.details{margin-top:25px;line-height:1.65;color:#b6c0ce}
-</style></head>
-<body><main class="wrap">
-<header><small>GFD · NKUA / Fluid Dynamics</small><a href="GFD-NKUA/semicircular_hill_flow.py">View Python source</a></header>
-<h1>Potential flow over a semicircular hill</h1>
-<div class="formula">Φ(r, θ) = U(r + a²/r) cos θ</div>
-<div class="panel"><canvas id="flow" width="1050" height="440" aria-label="Animation of steady potential flow over a semicircular hill"></canvas>
-<div class="controls">
-<button id="toggle">Pause</button><button id="reset">Reset</button>
-<label>U <input id="speed" type="range" min="0.25" max="2.5" value="1" step="0.05"><output id="speedVal">1.00</output></label>
-<label>a <input id="radius" type="range" min="0.6" max="1.4" value="1" step="0.05"><output id="radiusVal">1.00</output></label>
-<label><input id="traces" type="checkbox" checked> Streamlines</label>
-<label><input id="colors" type="checkbox" checked> Speed field</label>
-</div></div>
-<section class="details">
-<p>Steady, incompressible, irrotational potential flow in the upper half-plane. The colored field is the normalized speed |u|/U; small white dots are moving fluid tracers. The solid semicircle enforces no normal flow. This is an analytical ideal-fluid solution, <strong>not</strong> a turbulent Navier–Stokes simulation.</p>
-<p class="muted">Coordinates are normalized by the reference hill radius. Change U or a to explore the velocity field. The animation runs entirely in your browser.</p>
-</section></main>
-<script>
-(() => {
-const canvas=document.getElementById('flow'),ctx=canvas.getContext('2d');
-const W=1050,H=440, margin={left:49,right:65,top:20,bottom:38};
-const xMin=-4.5,xMax=6,yMin=0,yMax=3.5;
-const plotW=W-margin.left-margin.right,plotH=H-margin.top-margin.bottom;
-let U=1,a=1,playing=true,streamlines=true,colors=true,simT=0,last=0;
-const seed=7;let rngState=seed;
-const rand=()=>{rngState=(1664525*rngState+1013904223)>>>0;return rngState/4294967296};
-const sx=x=>margin.left+(x-xMin)/(xMax-xMin)*plotW;
-const sy=y=>H-margin.bottom-(y-yMin)/(yMax-yMin)*plotH;
-function vel(x,y){const r2=Math.max(x*x+y*y,1e-8),k=a*a/(r2*r2);
-return [U*(1-k*(x*x-y*y)),-2*U*k*x*y]}
-function rk(x,y,dt){const p=vel(x,y),q=vel(x+dt*p[0]/2,y+dt*p[1]/2),r=vel(x+dt*q[0]/2,y+dt*q[1]/2),s=vel(x+dt*r[0],y+dt*r[1]);return [x+dt*(p[0]+2*q[0]+2*r[0]+s[0])/6,y+dt*(p[1]+2*q[1]+2*r[1]+s[1])/6]}
-let particles=[];
-function reset(){rngState=seed;simT=0;particles=Array.from({length:300},()=>({x:xMin+(xMax-xMin)*rand(),y:0.12+(yMax-0.3)*rand()}));
-for(const p of particles)if(p.x*p.x+p.y*p.y<a*a*1.03){p.x=xMin;p.y=0.12+(yMax-.3)*rand()}}
-function advance(dt){for(const p of particles){const v=rk(p.x,p.y,dt);p.x=v[0];p.y=v[1];
-if(p.x>xMax||p.y>yMax||p.x<xMin||p.y<0||p.x*p.x+p.y*p.y<a*a*.999){p.x=xMin;p.y=.12+(yMax-.3)*rand()}}simT+=dt}
-function col(t){t=Math.max(0,Math.min(1,t));const stops=[[30,35,95],[34,116,190],[43,186,168],[245,211,67],[240,91,52]];
-let z=t*4,i=Math.min(3,Math.floor(z)),f=z-i;return stops[i].map((v,j)=>Math.round(v*(1-f)+stops[i+1][j]*f))}
-let backdrop=null;
-function buildBackdrop(){const off=document.createElement('canvas');off.width=468;off.height=191;const c=off.getContext('2d'),im=c.createImageData(off.width,off.height);
-for(let py=0;py<off.height;py++)for(let px=0;px<off.width;px++){let x=xMin+(px+.5)/off.width*(xMax-xMin),y=yMax-(py+.5)/off.height*(yMax-yMin),r2=x*x+y*y,i=(py*off.width+px)*4;
-const v=vel(x,y),t=Math.hypot(...v)/U/2,cc=r2<a*a?[35,40,48]:col(t);
-im.data[i]=cc[0];im.data[i+1]=cc[1];im.data[i+2]=cc[2];im.data[i+3]=255}
-c.putImageData(im,0,0);backdrop=off}
-function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle='#10151c';ctx.fillRect(0,0,W,H);
-ctx.save();ctx.beginPath();ctx.rect(margin.left,margin.top,plotW,plotH);ctx.clip();
-if(colors&&backdrop)ctx.drawImage(backdrop,margin.left,margin.top,plotW,plotH);
-else{ctx.fillStyle='#1e3447';ctx.fillRect(margin.left,margin.top,plotW,plotH)}
-if(streamlines){ctx.strokeStyle='rgba(235,243,250,.38)';ctx.lineWidth=.8;
-for(let yy=.18;yy<yMax;yy+=.24){ctx.beginPath();let x=xMin,y=yy;
-for(let j=0;j<1100;j++){if(x>xMax||y>yMax||y<0)break;if(j===0)ctx.moveTo(sx(x),sy(y));else ctx.lineTo(sx(x),sy(y));
-const p=rk(x,y,.012/U);x=p[0];y=p[1]}ctx.stroke()}}
-ctx.fillStyle='rgba(255,255,255,.92)';for(const p of particles){ctx.beginPath();ctx.arc(sx(p.x),sy(p.y),1.65,0,Math.PI*2);ctx.fill()}
-ctx.beginPath();ctx.moveTo(sx(-a),sy(0));for(let j=0;j<=100;j++){const theta=Math.PI-j*Math.PI/100;ctx.lineTo(sx(a*Math.cos(theta)),sy(a*Math.sin(theta)))}ctx.closePath();ctx.fillStyle='#d8dbe1';ctx.fill();ctx.strokeStyle='#10151c';ctx.lineWidth=2;ctx.stroke();
-ctx.restore();
-ctx.strokeStyle='#a5b1c2';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx(xMin),sy(0));ctx.lineTo(sx(xMax),sy(0));ctx.stroke();
-ctx.fillStyle='#e4eaf2';ctx.font='14px system-ui';ctx.textAlign='center';ctx.fillText('x / a₀',margin.left+plotW/2,H-9);
-ctx.save();ctx.translate(17,margin.top+plotH/2);ctx.rotate(-Math.PI/2);ctx.fillText('y / a₀',0,0);ctx.restore();
-ctx.font='12px system-ui';for(let x=-4;x<=6;x+=2)ctx.fillText(x,sx(x),sy(0)+19);
-ctx.textAlign='right';for(let y=0;y<=3;y++){ctx.fillText(y,margin.left-9,sy(y)+4)}
-ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='14px system-ui';ctx.fillText('t U₀ / a₀ = '+simT.toFixed(2),margin.left+12,margin.top+23);
-ctx.fillText('Speed |u| / U',W-155,margin.top+23);
-for(let i=0;i<120;i++){const c=col(i/119);ctx.fillStyle='rgb('+c.join(',')+')';ctx.fillRect(W-155+i,margin.top+33,1,9)}
-ctx.fillStyle='#e3ebf6';ctx.font='11px system-ui';ctx.fillText('0',W-155,margin.top+57);ctx.textAlign='right';ctx.fillText('2',W-35,margin.top+57)
-}
-function frame(t){const elapsed=Math.min((t-last)/1000,.06);last=t;if(playing&&elapsed>0){const dt=elapsed*U;for(let k=0;k<3;k++)advance(dt/3)}draw();requestAnimationFrame(frame)}
-function updateParameters(){U=+document.getElementById('speed').value;a=+document.getElementById('radius').value;
-document.getElementById('speedVal').textContent=U.toFixed(2);
-document.getElementById('radiusVal').textContent=a.toFixed(2);reset();buildBackdrop()}
-document.getElementById('speed').addEventListener('input',updateParameters);
-document.getElementById('radius').addEventListener('input',updateParameters);
-document.getElementById('toggle').onclick=()=>{playing=!playing;document.getElementById('toggle').textContent=playing?'Pause':'Play'};
-document.getElementById('reset').onclick=reset;
-document.getElementById('traces').onchange=e=>streamlines=e.target.checked;
-document.getElementById('colors').onchange=e=>colors=e.target.checked;
-reset();buildBackdrop();requestAnimationFrame(frame);
-})();
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semicircular Hill Flow | GFD-NKUA</title>
+  <style>
+    body { margin: 0; background: #111827; color: #f9fafb; font-family: system-ui, sans-serif; }
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2.4rem); margin-bottom: 8px; }
+    p { color: #cbd5e1; }
+    video { display: block; width: 100%; height: auto; margin-top: 24px; border-radius: 12px; background: #000; }
+    a { color: #93c5fd; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Potential Flow over a Semicircular Hill</h1>
+    <p>GFD-NKUA · Animation of the analytical potential-flow solution.</p>
+    <video controls autoplay muted loop playsinline preload="metadata">
+      <source src="GFD-NKUA/semicircular_hill_flow.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+      <a href="GFD-NKUA/semicircular_hill_flow.mp4">Open the MP4</a>.
+    </video>
+    <p><a href="GFD-NKUA/semicircular_hill_flow.py">Python source</a></p>
+  </main>
+</body>
+</html>
