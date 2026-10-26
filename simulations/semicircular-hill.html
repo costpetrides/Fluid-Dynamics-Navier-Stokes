@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Analytical potential flow over a semicircular hill, with the original simulation video and Python source.">
+<title>Semicircular Hill · Fluid Dynamics</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;background:#0c1015;color:#eef2f6}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}a{color:#b8d7f0;text-decoration:none}a:hover{text-decoration:underline}a:focus-visible{outline:2px solid #b8d7f0;outline-offset:5px}
+main{max-width:1100px;margin:auto;padding:28px 24px 90px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;padding-bottom:25px;border-bottom:1px solid #27313a;font-size:13px}
+.kicker{color:#9dbbd2;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:700;margin-top:61px}
+h1{font-size:clamp(33px,5vw,57px);letter-spacing:-.055em;line-height:1.09;margin:15px 0}p{max-width:740px;color:#adb9c7}video{display:block;width:100%;height:auto;max-height:72vh;background:black;border-radius:12px;margin:30px 0 16px}
+.action{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;margin-bottom:49px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}.block{padding:27px;background:#151c24;border-radius:12px}.block h2{font-size:20px;margin:0 0 15px}.formula{font-family:Georgia,serif;font-size:21px;overflow-wrap:anywhere}.block p{font-size:14px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.kicker{margin-top:40px}.block{padding:21px}}
+</style></head><body><main>
+<nav class="top"><a href="../index.html">← All simulations</a><a href="https://github.com/costpetrides/Fluid-Dynamics-Navier-Stokes">GitHub ↗</a></nav>
+<div class="kicker">GFD–NKUA / Analytical fluid mechanics</div>
+<h1>Potential Flow over a Semicircular Hill</h1>
+<p>A steady uniform stream flows over a semicircular hill of radius <i>a</i>. This visualization uses the exact potential-flow velocity field to animate tracer particles and a material contour.</p>
+<video controls autoplay muted loop playsinline preload="metadata"><source src="../GFD-NKUA/semicircular_hill_flow.mp4" type="video/mp4">Your browser does not support MP4 playback.</video>
+<div class="action"><a href="../GFD-NKUA/semicircular_hill_flow.mp4">Open original MP4 ↗</a><a href="https://github.com/costpetrides/Fluid-Dynamics-Navier-Stokes/blob/main/GFD-NKUA/semicircular_hill_flow.py">View Python source ↗</a></div>
+<div class="grid">
+<section class="block"><h2>Velocity potential</h2><div class="formula">Φ(r, θ) = U(r + a²/r) cos θ</div><p>The wind approaches with uniform far-field speed <i>U</i>. The upper semicircle represents an impermeable hill.</p></section>
+<section class="block"><h2>Physical interpretation</h2><p>The model is steady, incompressible and irrotational. At the hill summit the ideal-fluid speed is 2<i>U</i>, giving a pressure coefficient of −3. It excludes viscosity, separation and turbulence.</p></section>
+</div></main></body></html>
