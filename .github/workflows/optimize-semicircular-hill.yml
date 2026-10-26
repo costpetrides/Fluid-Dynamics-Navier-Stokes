@@ -1,0 +1,42 @@
+name: Optimize semicircular hill video
+
+on:
+  push:
+    paths:
+      - .github/workflows/optimize-semicircular-hill.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Generate web-optimized MP4 and poster
+        run: |
+          set -euo pipefail
+          src="GFD-NKUA/semicircular_hill_flow.mp4"
+          test -s "$src"
+          ffmpeg -hide_banner -loglevel error -y -i "$src" \
+            -map 0:v:0 -an -c:v libx264 -preset medium -crf 24 \
+            -vf "scale='min(1280,iw)':-2" -pix_fmt yuv420p \
+            -movflags +faststart "GFD-NKUA/semicircular_hill_flow_web.mp4"
+          ffmpeg -hide_banner -loglevel error -y -i "$src" \
+            -frames:v 1 -q:v 3 "GFD-NKUA/semicircular_hill_poster.jpg"
+          test -s "GFD-NKUA/semicircular_hill_flow_web.mp4"
+          test -s "GFD-NKUA/semicircular_hill_poster.jpg"
+      - name: Commit only the generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add GFD-NKUA/semicircular_hill_flow_web.mp4 GFD-NKUA/semicircular_hill_poster.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Add optimized semicircular hill video and poster"
+            git push
+          fi
